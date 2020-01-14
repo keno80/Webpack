@@ -7,5 +7,15 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),  //path通常为一个绝对路径，可以使用node的path模块
     filename: 'bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        //使用css-loader加载css，使用style-loader将样式使用到dom中
+        //使用多个loader时，从右向左
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   }
 }
