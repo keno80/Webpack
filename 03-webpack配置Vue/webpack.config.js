@@ -1,4 +1,5 @@
 const path = require('path')
+const { VueLoaderPlugin } = require('vue-loader')  //在Vue-loader版本高于15时，需要使用VueLoaderPlugin
 
 module.exports = {
   //入口: 可以是字符串/数组/对象，因为这里只有一个，所以只需要一个字符串即可
@@ -45,13 +46,24 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.vue$/,
+        use: ['vue-loader']
       }
     ]
   },
   // 将Vue的版本从runtime-only切换到runtime-compiler，以使vue可以正常编译
   resolve: {
+    // 解决扩展名，当有文件的扩展名不想写的时候，在此处添加或者修改
+    extensions: ['.js','.css','.vue'],
+    // 解决路径问题
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
     }
-  }
+  },
+  plugins: [
+      //在Vue-loader版本高于15时，需要使用VueLoaderPlugin
+      new VueLoaderPlugin()
+  ]
 }

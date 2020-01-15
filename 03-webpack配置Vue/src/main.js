@@ -16,22 +16,13 @@ require('./css/spec.scss')
 
 //引入vue
 import Vue from 'vue'
+import App from "./vue/App";
+
 new Vue({
   el: '#app',
-  template: `
-  <div>
-    <h2>{{message}}</h2>
-    <button @click="btnClick">按钮</button>
-  </div>
-  `,
-  data: {
-    message: 'hello word'
-  },
-  methods: {
-    btnClick() {
-      console.log('btn')
-    }
+  template: '<App/>',
+  components: {
+    App
   }
-
 })
 
