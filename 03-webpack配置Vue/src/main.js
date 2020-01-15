@@ -16,11 +16,22 @@ require('./css/spec.scss')
 
 //引入vue
 import Vue from 'vue'
-const app = new Vue({
+new Vue({
   el: '#app',
+  template: `
+  <div>
+    <h2>{{message}}</h2>
+    <button @click="btnClick">按钮</button>
+  </div>
+  `,
   data: {
     message: 'hello word'
   },
+  methods: {
+    btnClick() {
+      console.log('btn')
+    }
+  }
 
 })
 
