@@ -8,5 +8,9 @@ console.log(perInfo.name);
 console.log(perInfo.age);
 console.log(perInfo.height);
 
+//依赖CSS文件
 require('./css/normal.css')
+
+//依赖SCSS文件
+require('./css/spec.scss')
 
