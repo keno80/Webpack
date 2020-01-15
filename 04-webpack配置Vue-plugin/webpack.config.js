@@ -1,6 +1,7 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')  //在Vue-loader版本高于15时，需要使用VueLoaderPlugin
 const webpack = require('webpack')
+const htmlWebpackPlugin = require('html-webpack-plugin') //将index.html打包到dist文件夹之中
 
 module.exports = {
   //入口: 可以是字符串/数组/对象，因为这里只有一个，所以只需要一个字符串即可
@@ -9,7 +10,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),  //path通常为一个绝对路径，可以使用node的path模块
     filename: 'bundle.js',
-    publicPath: 'dist/'  //将打包后的文件都拼接一个dist/
+    // publicPath: 'dist/'  //将打包后的文件都拼接一个dist/ ， 有了html-webpack-plugin之后，所有js会自动插入，因此不需要了
   },
   module: {
     rules: [
@@ -66,6 +67,10 @@ module.exports = {
   plugins: [
       //在Vue-loader版本高于15时，需要使用VueLoaderPlugin
       new VueLoaderPlugin(),
-      new webpack.BannerPlugin('最终版权归keno所有')
+      new webpack.BannerPlugin('最终版权归keno所有'),
+      new htmlWebpackPlugin({
+        //为打包后的index指定模板
+        template: 'index.html'
+      })
   ]
 }
