@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="title">标题</h2>
+    <h2 class="title">标题1111111</h2>
     <h2>{{name}}</h2>
     <p>内容</p>
   </div>

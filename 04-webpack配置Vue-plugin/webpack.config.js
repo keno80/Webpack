@@ -55,6 +55,7 @@ module.exports = {
       }
     ]
   },
+
   // 将Vue的版本从runtime-only切换到runtime-compiler，以使vue可以正常编译
   resolve: {
     // 解决扩展名，当有文件的扩展名不想写的时候，在此处添加或者修改
@@ -64,6 +65,7 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js'
     }
   },
+
   plugins: [
       //在Vue-loader版本高于15时，需要使用VueLoaderPlugin
       new VueLoaderPlugin(),
@@ -72,5 +74,12 @@ module.exports = {
         //为打包后的index指定模板
         template: 'index.html'
       })
-  ]
+  ],
+
+  // 本地dev-serve服务
+  devServer: {
+    contentBase: './dist',   //服务于./dist文件夹
+    inline: true,  //是否需要实时监听
+    port: 9090  //运行端口
+  }
 }
